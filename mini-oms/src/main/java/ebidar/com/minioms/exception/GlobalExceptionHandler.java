@@ -12,17 +12,17 @@ import java.util.Date;
 public class GlobalExceptionHandler {
 
 
-    @ExceptionHandler(BadRequest.class)
-    public ResponseEntity<?> resourceBadRequestHandling(BadRequest exception, WebRequest request){
-        ErrorDetails errorDetails =
-                new ErrorDetails(new Date(), exception.getMessage(), request.getDescription(false));
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<?> resourceBadRequestHandling(BadRequestException exception, WebRequest request){
+        ErrorDetailsException errorDetails =
+                new ErrorDetailsException(new Date(), exception.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(NotFound.class)
     public ResponseEntity<?> resourceNotFoundHandling(NotFound exception, WebRequest request){
-        ErrorDetails errorDetails =
-                new ErrorDetails(new Date(), exception.getMessage(), request.getDescription(false));
+        ErrorDetailsException errorDetails =
+                new ErrorDetailsException(new Date(), exception.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
 

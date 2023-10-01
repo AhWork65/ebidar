@@ -21,6 +21,10 @@ public class Customer {
     private String lastName;
     private String exchangeCode;
 
+    public void update(Customer customer){
+
+    }
+
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
     private Set<Order> orders;
 
