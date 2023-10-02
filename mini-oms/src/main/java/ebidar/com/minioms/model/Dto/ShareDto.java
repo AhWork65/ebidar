@@ -4,14 +4,20 @@ import ebidar.com.minioms.model.enums.SettlementDateType;
 import lombok.*;
 
 
-@RequiredArgsConstructor
-@NoArgsConstructor
-@AllArgsConstructor
+
 @ToString
 @Getter
 @Setter
 public class ShareDto {
+
     private String shareCode;
     private SettlementDateType settlementDate;
 
+    public ShareDto(String shareCode, SettlementDateType settlementDate) {
+        this.shareCode = shareCode;
+        this.settlementDate = settlementDate;
+    }
+
+    public ShareDto() {
+    }
 }

@@ -8,9 +8,6 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@RequiredArgsConstructor
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @Getter
 @Setter
@@ -24,6 +21,15 @@ public class Share {
 
     @OneToMany(mappedBy = "share", fetch = FetchType.EAGER)
     private Set<Order> orders;
+
+    public Share() {
+    }
+
+    public Share(String shareCode, SettlementDateType settlementDate, Set<Order> orders) {
+        this.shareCode = shareCode;
+        this.settlementDate = settlementDate;
+        this.orders = orders;
+    }
 
     @Override
     public boolean equals(Object o) {

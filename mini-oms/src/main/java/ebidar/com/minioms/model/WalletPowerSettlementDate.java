@@ -8,9 +8,6 @@ import java.math.BigDecimal;
 import java.util.*;
 
 @Entity
-@RequiredArgsConstructor
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @Getter
 @Setter
@@ -26,6 +23,16 @@ public class WalletPowerSettlementDate {
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "wallet_power_settlement_date_debtor", joinColumns = @JoinColumn(name = "wallet_power_settlement_date_id"))
     private List<WalletPowerSettlementDateDebtor> walletPowerSettlementDateDebtors = new ArrayList<WalletPowerSettlementDateDebtor>();
+
+    public WalletPowerSettlementDate() {
+    }
+
+    public WalletPowerSettlementDate(SettlementDateType dateType, BigDecimal balance, Wallet wallet, List<WalletPowerSettlementDateDebtor> walletPowerSettlementDateDebtors) {
+        this.dateType = dateType;
+        Balance = balance;
+        this.wallet = wallet;
+        this.walletPowerSettlementDateDebtors = walletPowerSettlementDateDebtors;
+    }
 
     @Override
     public boolean equals(Object o) {

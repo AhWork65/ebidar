@@ -3,9 +3,7 @@ package ebidar.com.minioms.model.Dto;
 import lombok.*;
 
 
-@RequiredArgsConstructor
-@NoArgsConstructor
-@AllArgsConstructor
+
 @ToString
 @Getter
 @Setter
@@ -15,4 +13,12 @@ public class CustomerDto {
     private String lastName;
     private String exchangeCode;
 
+    public CustomerDto() {
+    }
+
+    public CustomerDto(String name, String lastName, String exchangeCode) {
+        this.name = name;
+        this.lastName = lastName;
+        this.exchangeCode = exchangeCode;
+    }
 }

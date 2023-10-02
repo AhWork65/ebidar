@@ -10,9 +10,6 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@RequiredArgsConstructor
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @Getter
 @Setter
@@ -32,6 +29,15 @@ public class Wallet {
     @OneToOne(mappedBy = "wallet")
     private Customer customer;
 
+    public Wallet() {
+    }
+
+    public Wallet(BigDecimal blockPrice, Set<WalletPowerSettlementDate> walletPowerSettlementDates, BigDecimal blockedBalance, Customer customer) {
+        this.blockPrice = blockPrice;
+        this.walletPowerSettlementDates = walletPowerSettlementDates;
+        this.blockedBalance = blockedBalance;
+        this.customer = customer;
+    }
 
     @Override
     public boolean equals(Object o) {

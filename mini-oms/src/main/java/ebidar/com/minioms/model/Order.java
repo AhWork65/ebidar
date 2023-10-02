@@ -10,8 +10,6 @@ import java.util.Objects;
 
 
 @Entity
-@RequiredArgsConstructor
-@NoArgsConstructor
 @ToString
 @Getter
 @Setter
@@ -35,6 +33,9 @@ public class Order {
     private OrderType orderType;
     @Enumerated(EnumType.STRING)
     private OrderState orderState;
+
+    public Order() {
+    }
 
     public Order(Share share, Customer customer, BigDecimal amount, Integer count, OrderType orderType, OrderState orderState) {
         this.share = share;

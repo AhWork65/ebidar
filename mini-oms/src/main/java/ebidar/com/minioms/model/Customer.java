@@ -7,9 +7,6 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@RequiredArgsConstructor
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @Getter
 @Setter
@@ -25,12 +22,19 @@ public class Customer {
     @JoinColumn(name = "wallet_id",referencedColumnName = "id")
     private Wallet wallet;
 
-    public void update(Customer customer) {
-
-    }
-
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
     private Set<Order> orders;
+
+    public Customer(String name, String lastName, String exchangeCode, Wallet wallet, Set<Order> orders) {
+        this.name = name;
+        this.lastName = lastName;
+        this.exchangeCode = exchangeCode;
+        this.wallet = wallet;
+        this.orders = orders;
+    }
+
+    public Customer() {
+    }
 
     @Override
     public boolean equals(Object o) {
