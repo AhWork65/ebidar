@@ -8,7 +8,7 @@
 		<version>3.0.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>ebidar.com</groupId>
+	<groupId>com.ebidar</groupId>
 	<artifactId>mini-oms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mini-oms</name>

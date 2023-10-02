@@ -21,7 +21,11 @@ public class Customer {
     private String lastName;
     private String exchangeCode;
 
-    public void update(Customer customer){
+    @OneToOne
+    @JoinColumn(name = "wallet_id",referencedColumnName = "id")
+    private Wallet wallet;
+
+    public void update(Customer customer) {
 
     }
 
@@ -33,11 +37,11 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return Objects.equals(Id, customer.Id) && Objects.equals(name, customer.name) && Objects.equals(lastName, customer.lastName) && Objects.equals(exchangeCode, customer.exchangeCode);
+        return Objects.equals(Id, customer.Id) && Objects.equals(name, customer.name) && Objects.equals(lastName, customer.lastName) && Objects.equals(exchangeCode, customer.exchangeCode) && Objects.equals(wallet, customer.wallet);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, name, lastName, exchangeCode);
+        return Objects.hash(Id, name, lastName, exchangeCode, wallet);
     }
 }

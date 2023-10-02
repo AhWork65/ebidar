@@ -21,16 +21,29 @@ public class Wallet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
-    private Set<Order> orders;
+    private BigDecimal blockPrice;
 
-    @ElementCollection
-    @CollectionTable(name = "wallet_buying_Power",
-            joinColumns = {@JoinColumn(name = "wallet_id", referencedColumnName = "id")})
-    @MapKeyColumn(name = "settlement_date_type")
-    @Column(name = "price")
-    private Map<SettlementDateType, BigDecimal> BuyingPower;
+    @OneToMany(mappedBy = "wallet", fetch = FetchType.EAGER)
+    private Set<WalletPowerSettlementDate> walletPowerSettlementDates;
 
-    private BigDecimal blockedAmount;
+
+    private BigDecimal blockedBalance;
+
+    @OneToOne(mappedBy = "wallet")
+    private Customer customer;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Wallet wallet = (Wallet) o;
+        return Objects.equals(Id, wallet.Id) && Objects.equals(blockPrice, wallet.blockPrice) && Objects.equals(walletPowerSettlementDates, wallet.walletPowerSettlementDates) && Objects.equals(blockedBalance, wallet.blockedBalance) && Objects.equals(customer, wallet.customer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Id, blockPrice, walletPowerSettlementDates, blockedBalance, customer);
+    }
 }
 

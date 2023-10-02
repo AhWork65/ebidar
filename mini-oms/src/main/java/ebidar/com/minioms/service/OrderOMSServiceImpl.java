@@ -31,7 +31,7 @@ public class OrderOMSServiceImpl implements IOrderOMSService {
 
 
     @Override
-    public Long createOrder(OrderDto input) throws NotValidException, NotFound {
+    public Long createOrder(OrderDto input) throws  NotFound {
         var customer = customerOMSService.getCustomerByExchangeCode(input.getExchangeCode());
         var share = shareOMSService.getShareByCode(input.getShareCode());
         var order = orderRepository.save(new Order(share, customer, new BigDecimal(input.getAmount()), input.getCount(), input.getOrderType(), OrderState.NON));
