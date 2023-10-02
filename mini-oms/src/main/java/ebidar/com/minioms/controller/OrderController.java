@@ -1,19 +1,14 @@
 package ebidar.com.minioms.controller;
 
 
-
 import ebidar.com.minioms.exception.NotFound;
 import ebidar.com.minioms.exception.NotValidException;
-import ebidar.com.minioms.model.Dto.OrderDto;
-import ebidar.com.minioms.model.Dto.ShareDto;
+import ebidar.com.minioms.exception.WalletNoBalanceException;
+import ebidar.com.minioms.model.Dto.*;
 import ebidar.com.minioms.model.Dto.UpdateOrderDto;
-import ebidar.com.minioms.model.Share;
 import ebidar.com.minioms.service.IOrderOMSService;
-import ebidar.com.minioms.service.IShareOMSService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @CrossOrigin(maxAge = 4200)
@@ -28,7 +23,7 @@ public class OrderController {
     }
 
     @PostMapping()
-    public void createOrder(@RequestBody OrderDto input) throws NotValidException, NotFound {
+    public void createOrder(@RequestBody OrderDto input) throws NotValidException, NotFound, WalletNoBalanceException {
         orderOMSService.createOrder(input);
     }
 

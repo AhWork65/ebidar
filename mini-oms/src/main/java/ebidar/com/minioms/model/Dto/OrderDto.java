@@ -1,10 +1,10 @@
 package ebidar.com.minioms.model.Dto;
 
 import ebidar.com.minioms.model.enums.OrderType;
-import ebidar.com.minioms.model.enums.SettlementDateType;
+
 import lombok.*;
 
-import java.math.BigDecimal;
+
 
 
 @RequiredArgsConstructor

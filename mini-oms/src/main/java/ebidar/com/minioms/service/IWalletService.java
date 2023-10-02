@@ -22,7 +22,7 @@ public interface IWalletService {
     @Transactional(rollbackFor = {Exception.class})
     void returnBlockPrice(Wallet wallet, SettlementDateType dateType, BigDecimal price);
     @Transactional(rollbackFor = {Exception.class})
-    void ReduceBlockPrice(Wallet wallet, BigDecimal price);
+    void reduceBlockPrice(Wallet wallet, BigDecimal price);
 
     @Transactional(rollbackFor = {Exception.class})
     BigDecimal getBalancePowerBySettlementDate(Wallet wallet, SettlementDateType dateType);

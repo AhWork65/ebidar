@@ -79,7 +79,7 @@ public class WalletServiceImpl implements IWalletService {
 
 
     @Override
-    public void ReduceBlockPrice(Wallet wallet, BigDecimal price) {
+    public void reduceBlockPrice(Wallet wallet, BigDecimal price) {
         wallet.getBlockPrice().subtract(price);
     }
 
